@@ -1,4 +1,11 @@
 FirstApp::Application.routes.draw do
+  resources :users
+
+
+  get "static/home"
+
+  get "static/contact"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
