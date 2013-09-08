@@ -25,7 +25,7 @@ class StoriesController < ApplicationController
   # GET /stories/new.json
   def new
     @story = Story.new
-    current_user
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @story }
@@ -40,16 +40,13 @@ class StoriesController < ApplicationController
   # POST /stories
   # POST /stories.json
   def create
-    @story = Story.new(params[:story])
+    @story = current_user.stories.build(params[:story])
 
-    respond_to do |format|
-      if @story.save
-        format.html { redirect_to @story, notice: 'Story was successfully created.' }
-        format.json { render json: @story, status: :created, location: @story }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @story.errors, status: :unprocessable_entity }
-      end
+    if @story.save
+      flash[:success] = "Success story created!"
+      redirect_to stories_url
+    else
+      render 'static/home'
     end
   end
 
@@ -76,8 +73,10 @@ class StoriesController < ApplicationController
     @story.destroy
 
     respond_to do |format|
-      format.html { redirect_to stories_url }
+      format.html { redirect_to new_story_path }
       format.json { head :no_content }
     end
   end
+
+
 end

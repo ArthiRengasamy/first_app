@@ -1,0 +1,63 @@
+<% provide(:title, 'Products') %>
+<h1>Products(Made by our NGO)</h1>
+
+<table>
+  <tr>
+    <td><img src="first_app/app/assets/images/rails.png"/></td>
+    <td><img src="first_app/app/assets/images/rails.png"/></td>
+    <td><img src="first_app/app/assets/images/rails.png"/></td>
+  </tr>
+  <tr>
+    <td>Product code: 0001</td>
+    <td>Product code: 0002</td>
+    <td>Product code: 0003</td>
+  </tr>
+</table>
+<h3 style="text-align: left"><b>General Product enquiry</b></h3>
+
+<% if @enquiry.errors.any? %>
+    <div id="error_explanation">
+      <div class="alert alert-error">
+        The form contains <%= pluralize(@enquiry.errors.count, "error") %>.
+      </div>
+      <ul>
+        <% @enquiry.errors.full_messages.each do |msg| %>
+            <li>* <%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
+
+<div class="row">
+  <div class="">
+    <%= form_for(@enquiry) do |f| %>
+
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+
+        <%= f.label :phone_field %>
+        <%= f.text_field :phone %>
+
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+
+        <%= f.label :address %>
+        <%= f.text_field :address %>
+
+        <%= f.label :itemcode %>
+        <%= f.select(:itemcode, Enquiry::ITEMCODE_TYPES) %>
+
+        <%= f.label :pieces %>
+        <%= f.text_field :pieces %>
+
+        <%= f.label :comments %>
+        <%= f.text_field :comments %>
+
+        <div></div>
+        <%= f.submit "Submit enquiry", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+

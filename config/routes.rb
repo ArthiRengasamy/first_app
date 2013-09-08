@@ -1,4 +1,7 @@
 FirstApp::Application.routes.draw do
+  resources :enquiries
+
+
   resources :stories
 
   resources :sessions, only: [:new, :create, :destroy]
@@ -13,6 +16,8 @@ FirstApp::Application.routes.draw do
   match '/signup',  to: 'users#new'
   match '/post',  to: 'stories#new'
   match '/story',  to: 'stories#index'
+  match '/product', to: 'enquiries#new'
+
 
   match '/signin',  to: 'sessions#new'
 

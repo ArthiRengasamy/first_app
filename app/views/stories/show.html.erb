@@ -1,15 +1,11 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, @user.name) %>
 
-<p>
-  <b>Content:</b>
-  <%= @story.content %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @story.user_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_story_path(@story) %> |
-<%= link_to 'Back', stories_path %>
+<div class="span8">
+  <% if @user.stories.any? %>
+      <h3>My success stories (<%= @user.stories.count %>)</h3>
+      <ol class="stories">
+        <%= render @stories %>
+      </ol>
+      <%= will_paginate @stories %>
+  <% end %>
+</div>

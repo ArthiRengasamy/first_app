@@ -1,15 +1,19 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="navbar-inner" >
-    <div class="container">
-      <%= link_to "Reach your NGO", home_path, id: "logo" %>
-      <nav>
-        <ul class="nav pull-centre">
-          <li><%= link_to "Home",    home_path %></li>
-          <li><%= link_to "How you can help",    new_user_path %></li>
-          <li><%= link_to "Success stories",    stories_path %></li>
-          <li><%= link_to "Contact Us", contact_path %></li>
-        </ul>
-      </nav>
+<header>
+<h1 style="padding-left: 205px;color: white"><%= link_to "Reach your NGO", home_path%>>
+</h1>
+    <div style="border: 2px solid blue;text-align:left">
+      <p style="font-size:1.4em">
+        &nbsp &nbsp  &nbsp    &nbsp  &nbsp
+        &nbsp &nbsp  &nbsp    &nbsp  &nbsp
+        &nbsp &nbsp  &nbsp    &nbsp  &nbsp
+        &nbsp  &nbsp
+          <%= link_to "About Us",    home_path %> &nbsp &nbsp  &nbsp    &nbsp  &nbsp
+          <%= link_to "How You can help",    new_user_path %>    &nbsp &nbsp &nbsp  &nbsp   &nbsp
+          <%= link_to "Success stories",    stories_path %> &nbsp  &nbsp  &nbsp  &nbsp &nbsp
+          <%= link_to "Products",    new_enquiry_path %>&nbsp &nbsp &nbsp   &nbsp   &nbsp
+          <%= link_to "Contact Us", contact_path %>
+        </p>
     </div>
-  </div>
+  </br>
+
 </header>
