@@ -1,10 +1,11 @@
 FirstApp::Application.routes.draw do
   resources :users
 
+  root to: 'static#home'
 
-  get "static/home"
-
-  get "static/contact"
+  match '/home', to: 'static#home'
+  match '/contact', to: 'static#contact'
+  match '/help',  to: 'users#new'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
