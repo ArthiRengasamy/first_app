@@ -1,4 +1,8 @@
 FirstApp::Application.routes.draw do
+  resources :stories
+
+  resources :sessions, only: [:new, :create, :destroy]
+
   resources :users
 
   root to: 'static#home'
@@ -7,6 +11,12 @@ FirstApp::Application.routes.draw do
   match '/contact', to: 'static#contact'
   match '/help',  to: 'users#new'
   match '/signup',  to: 'users#new'
+  match '/post',  to: 'stories#new'
+  match '/story',  to: 'stories#index'
+
+  match '/signin',  to: 'sessions#new'
+
+  match '/signout', to: 'sessions#destroy', via: :delete
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

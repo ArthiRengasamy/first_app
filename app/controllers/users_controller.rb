@@ -39,21 +39,17 @@ class UsersController < ApplicationController
 
   # POST /users
   # POST /users.json
-  def create
-    @user = User.new(params[:user])
-
-    def create
+     def create
       @user = User.new(params[:user])
       if @user.save
         flash[:success] = "Welcome to Reach Your NGO!"
         @story=Story.new
-        @user.name=@story.name
         redirect_to @story
       else
         render 'new'
       end
     end
-  end
+
 
   # PUT /users/1
   # PUT /users/1.json

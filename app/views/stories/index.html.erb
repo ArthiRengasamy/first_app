@@ -1,0 +1,22 @@
+<h1>Success stories from our Volunteers </h1>
+<div style="text-align: right"><%= link_to "Volunteer-sign in to post a story",new_session_path,class: "btn btn-large btn-primary" %></div>
+</br>
+</br>
+
+  <% @stories.each do |story| %>
+      <tr>
+        <td><%= story.content %></td>
+        </br>
+        <td><em>Posted by</em>:<%= story.user_id %></td>
+        </br>
+        </br>
+        </br>
+        </br>
+        <p style="text-align: right"><b><%= link_to "Top of page",stories_path %></b></p>
+      </tr>
+  <% end %>
+</table>
+
+
+
+
