@@ -16,6 +16,8 @@
 class User < ActiveRecord::Base
   attr_accessible :address, :area, :email, :gender, :name, :other  ,:password, :password_confirmation
   has_secure_password
+  GENDER_TYPES = ["Male", "Female", "Transgender" , "Prefer not to disclose"]
+  AREA_TYPES = ["Child Education", "Empowerment of Women", "Food for all", "Other"]
 
   before_save { |user| user.email = email.downcase }
 

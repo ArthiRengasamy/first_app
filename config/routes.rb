@@ -6,6 +6,7 @@ FirstApp::Application.routes.draw do
   match '/home', to: 'static#home'
   match '/contact', to: 'static#contact'
   match '/help',  to: 'users#new'
+  match '/signup',  to: 'users#new'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

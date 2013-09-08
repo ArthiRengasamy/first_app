@@ -42,13 +42,15 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
 
-    respond_to do |format|
+    def create
+      @user = User.new(params[:user])
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render json: @user, status: :created, location: @user }
+        flash[:success] = "Welcome to Reach Your NGO!"
+        @story=Story.new
+        @user.name=@story.name
+        redirect_to @story
       else
-        format.html { render action: "new" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        render 'new'
       end
     end
   end
