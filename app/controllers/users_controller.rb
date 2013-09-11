@@ -46,8 +46,7 @@ class UsersController < ApplicationController
       @user = User.new(params[:user])
       if @user.save
         flash[:success] = "Welcome to Reach Your NGO!"
-        @story=Story.new
-        redirect_to @story
+        redirect_to new_story_path
       else
         render 'new'
       end

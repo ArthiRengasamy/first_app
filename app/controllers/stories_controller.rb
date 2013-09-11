@@ -2,22 +2,29 @@ class StoriesController < ApplicationController
   # GET /stories
   # GET /stories.json
   def index
-    @stories = Story.all
+      @stories=Story.all
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @stories }
+
+      # Rendering all stories in an xml format http://localhost:3000/stories.xml
+
+      format.xml { render :xml=> @stories }
     end
   end
 
   # GET /stories/1
   # GET /stories/1.json
   def show
-    @story = Story.find(params[:id])
+      if signed_in?
+        @story = Story.find(params[:id])
+      else
+        @story=Story.all
+      end
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @story }
+      respond_to do |format|
+        format.html # show.html.erb
+        format.xml { render xml: @story }
     end
   end
 
@@ -44,7 +51,7 @@ class StoriesController < ApplicationController
 
     if @story.save
       flash[:success] = "Success story created!"
-      redirect_to stories_url
+      redirect_to @story
     else
       render 'static/home'
     end

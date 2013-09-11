@@ -17,4 +17,9 @@ class SessionsController < ApplicationController
     self.current_user = nil
     cookies.delete(:remember_token)
   end
+
+  def destroy
+    sign_out
+    redirect_to home_path
+  end
 end

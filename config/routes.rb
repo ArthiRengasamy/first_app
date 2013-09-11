@@ -16,11 +16,11 @@ FirstApp::Application.routes.draw do
   match '/signup',  to: 'users#new'
   match '/post',  to: 'stories#new'
   match '/story',  to: 'stories#index'
+
   match '/product', to: 'enquiries#new'
 
 
   match '/signin',  to: 'sessions#new'
-
   match '/signout', to: 'sessions#destroy', via: :delete
 
   # The priority is based upon order of creation:

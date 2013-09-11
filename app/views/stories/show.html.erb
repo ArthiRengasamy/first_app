@@ -1,11 +1,10 @@
-<% provide(:title, @user.name) %>
+<!--<% provide(:title, @user.name) %> -->
 
 <div class="span8">
-  <% if @user.stories.any? %>
-      <h3>My success stories (<%= @user.stories.count %>)</h3>
+      <h3>My success stories </h3>
       <ol class="stories">
-        <%= render @stories %>
+        <%= render @story %>
       </ol>
-      <%= will_paginate @stories %>
+      <%= will_paginate @story %>
   <% end %>
 </div>
