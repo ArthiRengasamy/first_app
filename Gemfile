@@ -5,8 +5,18 @@ gem 'rails', '3.2.13'
 gem "will_paginate"
 gem 'bootstrap-sass', '2.1'
 gem 'bcrypt-ruby', '3.0.1'
+gem 'therubyracer'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
+
+gem 'libv8', '3.11.8.0'
+
+group :test, :development do
+  gem "rspec-rails", "~> 2.0"
+  gem 'capybara', "~> 2.0.2"
+  gem "factory_girl_rails", "~> 4.0"
+end
+
 
 group :development do
   gem 'sqlite3', '1.3.5'

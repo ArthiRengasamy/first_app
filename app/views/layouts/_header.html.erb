@@ -1,11 +1,14 @@
 <header>
-<h1 style="padding-left: 205px;color: white"><%= link_to "Reach your NGO", home_path%>>
-  <div style="font-size: 15px;text-align:right;padding-right:150px">
+<!-- <h1 style="padding-left: 205px;color: white"><%= link_to "Reach your NGO", home_path%>> -->
+  <div style="margin-left:200px;max-width: 250px;max-height:250px"><%= link_to image_tag("ReachYourNGO.bmp"), home_path%></div>
+  <div style="font-size: 15px;text-align:right;padding-right:150px;font-weight:bold;">
     <% if signed_in? %>
       <%= link_to "Volunteer sign out", signout_path, method: "delete" %>
-  <% else %>
+    <% else %>
       <%= link_to "Volunteer sign in", signin_path %>
-  <% end %>
+    <% end %>
+    </br>
+    </br>
       </div>
 </h1>
     <div style="border: 2px solid blue;margin-left:200px;margin-right:150px;text-align:left">

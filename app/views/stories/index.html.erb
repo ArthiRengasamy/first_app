@@ -1,7 +1,17 @@
 <h1>Success stories from our Volunteers </h1>
-<!--<div style="text-align: right"><%= link_to "Volunteer-sign in to post a story",new_session_path,class: "btn btn-large btn-primary" %></div> -->
+
+<p style="text-align: right;font-weight:bold;font-style:italic;font-size:1.5em;color:blue" >
+  <% if signed_in? %>
+      <%= link_to "My success stories", :controller => :users, :action => :show, :id => current_user.id %>
+  <% end %>
+</p>
+
+
+<%= will_paginate @stories, :page_links => false%>
+
 </br>
 </br>
+
 
   <% @stories.each do |story| %>
       <tr>
@@ -12,10 +22,12 @@
         </br>
         </br>
         <p style="text-align: right"><b><%= link_to "Top of page",stories_path %></b></p>
+
       </tr>
+
   <% end %>
 </table>
-
+<%= will_paginate @stories, :page_links => false%>
 
 
 

@@ -1,8 +1,13 @@
 class StoriesController < ApplicationController
+  #before_filter :signed_in_user, only: [:create, :edit, :destroy]
+
+
   # GET /stories
   # GET /stories.json
   def index
+
       @stories=Story.all
+       @stories = Story.paginate(:page =>params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,11 +21,11 @@ class StoriesController < ApplicationController
   # GET /stories/1
   # GET /stories/1.json
   def show
-      if signed_in?
+#      if signed_in?
         @story = Story.find(params[:id])
-      else
-        @story=Story.all
-      end
+#      else
+#        @story=Story.all
+#      end
 
       respond_to do |format|
         format.html # show.html.erb
@@ -41,19 +46,21 @@ class StoriesController < ApplicationController
 
   # GET /stories/1/edit
   def edit
-    @story = Story.find(params[:id])
+    @story= Story.find_by_id(params[:id])
+
   end
 
   # POST /stories
   # POST /stories.json
   def create
-    @story = current_user.stories.build(params[:story])
-
+    #@story = current_user.stories.build(params[:story])
+    @story = current_user.stories.new(params[:story])
     if @story.save
       flash[:success] = "Success story created!"
-      redirect_to @story
+      #redirect_to stories_path
+      redirect_to :controller => :users, :action => :show, :id => current_user.id
     else
-      render 'static/home'
+      render 'stories/new'
     end
   end
 
@@ -76,11 +83,12 @@ class StoriesController < ApplicationController
   # DELETE /stories/1
   # DELETE /stories/1.json
   def destroy
-    @story = Story.find(params[:id])
+#    @story = Story.find(params[:id])
     @story.destroy
 
     respond_to do |format|
       format.html { redirect_to new_story_path }
+      #format.html {redirect_to :controller => :users, :action => :show, :id => current_user.id}
       format.json { head :no_content }
     end
   end

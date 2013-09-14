@@ -16,8 +16,11 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(params[:id])
+    @user=current_user
+    #@user = User.find(params[:id])
     @stories = @user.stories.paginate(page: params[:page])
+    @stories = Story.paginate(:page =>params[:page])
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }
@@ -37,7 +40,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
+     @user = User.find(params[:id])
   end
 
   # POST /users
@@ -46,7 +49,9 @@ class UsersController < ApplicationController
       @user = User.new(params[:user])
       if @user.save
         flash[:success] = "Welcome to Reach Your NGO!"
-        redirect_to new_story_path
+        #redirect_to :controller =>'stories', :action => 'new', :id=>@user.id
+        redirect_to stories_path
+        sign_in @user
       else
         render 'new'
       end
@@ -60,7 +65,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        sign_in @user
+        format.html { redirect_to :controller => :users, :action => :show, :id => current_user.id, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -80,8 +86,6 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-
 
 
   private

@@ -6,6 +6,13 @@
   jumpy veldt fox. Bright vixens jump; dozy fowl quack</p>
 <div style="text-align: right"><%= link_to "Read Volunteer success stories",stories_path,class: "btn btn-large btn-primary" %></div>
 
+
+
+<!-- DO NOT SHOW THE SIGNUP FORM IF THE USER IS ALREADY LOGGED IN -->
+
+<% if not signed_in? %>
+
+
 <h3 style="text-align: left"><b>Volunteer sign-up</b></h3>
 
 <div class="row">
@@ -41,6 +48,6 @@
     <% end %>
   </div>
 </div>
-
+<% end %>
 
 

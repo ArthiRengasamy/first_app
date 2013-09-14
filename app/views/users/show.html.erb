@@ -1,38 +1,34 @@
-<% provide(:title, @user.name) %>
-<h1>Hi! <%= @user.name %>– Go ahead and post your success story</h1>
+<% provide(:title, current_user.name) %>
+<h1 xmlns="http://www.w3.org/1999/html">Hi! <%= current_user.name %></h1>
+
+<p style="text-align: right;font-weight:bold;font-style:italic;font-size:1.5em;color:blue" >
+  <% if signed_in? %>
+      <% if current_user.stories.any? %>
+          <%= link_to "Post another success story", :controller => :stories, :action => :new, :id => current_user.id %>
+      <% else %>
+          <%= link_to "Post a success story", :controller => :stories, :action => :new, :id => current_user.id %>
+      <% end %>
+      </br>
+      </br>
+      </br>
+      <%= link_to "Edit my profile", :controller => :users, :action => :edit, :id => current_user.id %>
+  <% end %>
+</p>
 
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @user.name %>
-</p>
-
-<p>
-  <b>Gender:</b>
-  <%= @user.gender %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
-
-<p>
-  <b>Address:</b>
-  <%= @user.address %>
-</p>
-
-<p>
-  <b>Area:</b>
-  <%= @user.area %>
-</p>
-
-<p>
-  <b>Other:</b>
-  <%= @user.other %>
-</p>
 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="span8">
+  <% if current_user.stories.any? %>
+      <h2>My success stories (<%= current_user.stories.count %>)</h2>
+
+      <ol class="stories">
+            <%= render current_user.stories %>
+      </ol>
+
+  <% end %>
+</div>
+
+
+
