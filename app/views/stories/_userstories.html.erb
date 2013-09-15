@@ -1,0 +1,19 @@
+
+<!-- <%= will_paginate @stories, :page_links => false%>  -->
+<%= will_paginate @stories, params.merge({:commit => nil, :utf8 => nil}) %>
+
+
+
+
+   <% @stories.each do |story| %>
+  <tr>
+    <td><%= story.content %></td>
+
+    <p style="text-align: right"><b><%= link_to "Top of page",stories_path %></b></p>
+
+  </tr>
+
+<% end %>
+</table>
+<%= will_paginate @stories, params.merge({:commit => nil, :utf8 => nil}) %>
+
