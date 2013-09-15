@@ -2,6 +2,14 @@ The website has been developed on Ruby 1.9.3/Rails 3.2 using RubyMine IDE.
 
 The github repository is :
 https://github.com/ArthiRengasamy/first_app
+
+References:
+- Ruby on Rails Tutorial by Michael Hartl
+- Stackoverflow.com portal for issue resolution
+- Github for issue resolution
+- Net.tutsplus.com for guidance and issue resolution
+- Railscasts for guidance and issue resolution
+
 ==========================================================================================
 
 Does the code work?

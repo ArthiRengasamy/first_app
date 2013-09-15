@@ -6,8 +6,16 @@
   <% end %>
 </p>
 
+<!-- Search implementation using AJAX -->
+<%= form_tag stories_path, :method =>'get' do %>
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :name => nil %>
+    </p>
+<%end%>
 
-<%= will_paginate @stories, :page_links => false%>
+<!-- <%= will_paginate @stories, :page_links => false%>  -->
+<%= will_paginate @stories%>
 
 </br>
 </br>
@@ -27,7 +35,7 @@
 
   <% end %>
 </table>
-<%= will_paginate @stories, :page_links => false%>
+<%= will_paginate @stories%>
 
 
 

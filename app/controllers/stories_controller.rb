@@ -6,8 +6,10 @@ class StoriesController < ApplicationController
   # GET /stories.json
   def index
 
-      @stories=Story.all
-       @stories = Story.paginate(:page =>params[:page])
+      @stories=Story.search(params[:search]).paginate(:per_page =>10, :page => params[:page])
+#       @stories = Story.paginate(:page =>params[:page])
+    # For Ajax search
+    #@stories = Story.search(params[:search])
 
     respond_to do |format|
       format.html # index.html.erb

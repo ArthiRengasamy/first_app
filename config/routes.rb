@@ -1,16 +1,16 @@
 FirstApp::Application.routes.draw do
   resources :enquiries
-
-
   resources :stories
-
   resources :sessions, only: [:new, :create, :destroy]
-
   resources :users
 
   root to: 'static#home'
+  get "static/home"
+  get "static/contact"
+
 
   match '/home', to: 'static#home'
+  match '/static/home', to: 'static#home'
   match '/contact', to: 'static#contact'
   match '/help',  to: 'users#new'
   match '/signup',  to: 'users#new'

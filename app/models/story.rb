@@ -5,4 +5,13 @@ class Story < ActiveRecord::Base
   validates :content, presence: true
 
   default_scope order: 'stories.created_at DESC'
+
+  #Ajax search
+  def self.search(search)
+    if search
+      where('content LIKE ?',"%#{search}%")
+    else
+      scoped
+    end
+  end
 end
