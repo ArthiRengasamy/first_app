@@ -25,6 +25,9 @@ Yes. There are a few things that are in work in progress and there are some mino
 Is there good searpation of concerns within MVC?
 Yes. I understand this as the flow of logic between the models,views and controllers.
 
+Migrations incrementally built. The fields were defined initially but the building of the indices on the tables was done 
+using migrations.
+
 ===============================================================================================================================
 REST API(XML) and AJAX implementation:
 
