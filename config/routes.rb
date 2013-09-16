@@ -17,14 +17,14 @@ FirstApp::Application.routes.draw do
   match '/post',  to: 'stories#new'
   match '/story',  to: 'stories#index'
 
-  match '/stories/:id/edit', to: 'stories#update'
+  #match '/stories/:id/edit', to: 'stories#update'
 
-  match 'story/destroy/:id', to: 'stories#destroy', via: :delete
+  match 'story/:id', to: 'stories#destroy', via: :delete
   match '/product', to: 'enquiries#new'
   match '/user', to: 'users#show'
 
 
-  match 'story/edit/:id', to: 'stories#edit', :as => :edit_story
+  #match 'story/edit/:id', to: 'stories#edit', :as => :edit_story
 
 
   match '/signin',  to: 'sessions#new'

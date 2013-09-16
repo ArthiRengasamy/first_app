@@ -4,7 +4,7 @@ describe "Authentication" do
 
   before do
     @user = User.new(name: "Volunteer Test", email: "volunteer@test.com",
-                     password: "secret", password_confirmation: "secret")
+                     password: "testing", password_confirmation: "testing")
   end
 
   subject { @user }

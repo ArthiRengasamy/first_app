@@ -6,10 +6,12 @@ class StoriesController < ApplicationController
   # GET /stories.json
   def index
 
-      @stories=Story.search(params[:search]).paginate(:per_page =>10, :page => params[:page])
-#       @stories = Story.paginate(:page =>params[:page])
+    @stories=Story.paginate(:per_page=>10, :page => params[:page]).search(params[:search])
+
+
+#      @stories = Story.paginate(:page =>params[:page])
     # For Ajax search
-    #@stories = Story.search(params[:search])
+#    @stories = Story.search(params[:search])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -85,11 +87,11 @@ class StoriesController < ApplicationController
   # DELETE /stories/1
   # DELETE /stories/1.json
   def destroy
-#    @story = Story.find(params[:id])
+    @story = Story.find(params[:id])
     @story.destroy
 
     respond_to do |format|
-      format.html { redirect_to new_story_path }
+      format.html { redirect_to users_new_path }
       #format.html {redirect_to :controller => :users, :action => :show, :id => current_user.id}
       format.json { head :no_content }
     end

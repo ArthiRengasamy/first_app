@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     @user=current_user
     #@user = User.find(params[:id])
     @stories = @user.stories.paginate(page: params[:page])
-    @stories = Story.paginate(:page =>params[:page])
+    #@stories = Story.paginate(:page =>params[:page])
 
     respond_to do |format|
       format.html # show.html.erb

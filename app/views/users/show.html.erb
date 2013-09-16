@@ -1,16 +1,16 @@
 <% provide(:title, current_user.name) %>
-<h1 xmlns="http://www.w3.org/1999/html">Hi! <%= current_user.name %></h1>
+<h2 xmlns="http://www.w3.org/1999/html" style="font-weight:bold;font-size=1.2em;color:black">Hi! <%= current_user.name %></h2>
 
-<p style="text-align: right;font-weight:bold;font-style:italic;font-size:1.5em;color:blue" >
+<p style="text-align: right;font-weight:bold;font-style:italic;font-size:1.2em;color:blue" >
   <% if signed_in? %>
       <% if current_user.stories.any? %>
           <%= link_to "Post another success story", :controller => :stories, :action => :new, :id => current_user.id %>
+          </br>
+          </br>
       <% else %>
           <%= link_to "Post a success story", :controller => :stories, :action => :new, :id => current_user.id %>
       <% end %>
-      </br>
-      </br>
-      </br>
+
       <%= link_to "Edit my profile", :controller => :users, :action => :edit, :id => current_user.id %>
   <% end %>
 </p>

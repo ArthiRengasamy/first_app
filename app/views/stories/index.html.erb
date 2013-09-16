@@ -6,36 +6,7 @@
   <% end %>
 </p>
 
-<!-- Search implementation using AJAX -->
-<%= form_tag stories_path, :method =>'get' do %>
-    <p>
-      <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag "Search", :name => nil %>
-    </p>
-<%end%>
 
-<!-- <%= will_paginate @stories, :page_links => false%>  -->
-<%= will_paginate @stories%>
-
-</br>
-</br>
-
-
-  <% @stories.each do |story| %>
-      <tr>
-        <td><%= story.content %></td>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        <p style="text-align: right"><b><%= link_to "Top of page",stories_path %></b></p>
-
-      </tr>
-
-  <% end %>
-</table>
-<%= will_paginate @stories%>
-
-
+<div id="storiessearch"><%= render 'storiessearch' %></div>
+<div id="userstories"><%= render 'userstories' %></div>
 
