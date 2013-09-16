@@ -1,16 +1,17 @@
-require 'spec_helper'
+require '../../spec/spec_helper'
 
-describe "Stories page" do
+describe "Stories XML check" do
 
+  before (:each) do
+    visit '/stories.xml'
+  end
+  it "responds with XML" do
+    #response.body.should == story.to_xml
+    response = Nokogiri::XML(
+ #   response.should have_tag("stories type")
 
-#  it "responds with XML" do
-#    visit '/story'
-#    response.body.should == story.to_xml
-#  end
-
-  it 'should display the xml' do
-    get :stories, :format => 'xml', :lang => 'en'
-    response.should be_success
+    #response.content_type.should == story.to_xml
+    #response.headers["Content-Type"] = 'stories/xml'
   end
 
 end
